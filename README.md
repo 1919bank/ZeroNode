@@ -1,7 +1,6 @@
 # ZeroNode
-# Personal Finance Tracker
 
-Welcome to the **Personal Finance Tracker**, an innovative project designed to help users take control of their financial health. This application empowers individuals to manage their income, expenses, and savings effectively through an intuitive and user-friendly interface. Whether you are a budgeting novice or a financial guru, this tracker will help you make informed decisions about your money.
+Welcome to the **ZeroNode**, an innovative project designed to help users take control of their financial health. This application empowers individuals to effectively manage their income, expenses, and savings through an intuitive and user-friendly interface. Whether you are a budgeting novice or a financial guru, this tracker will help you make informed decisions about your money.
 
 ## Table of Contents
 
@@ -38,4 +37,6 @@ This project is built using:
 
 To get a local copy up and running, follow these steps:
 
-1. Clone the repositor
+1. Clone the repository
+```bash
+   git clone https://github.com/yourusername/personal-finance-tracker.git

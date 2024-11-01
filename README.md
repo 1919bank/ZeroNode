@@ -39,25 +39,6 @@ To get a local copy up and running, follow these steps:
 
 1. Clone the repository:
 ```bash
-   git clone https://github.com/yourusername/personal-finance-tracker.git```
+   git clone https://github.com/yourusername/personal-finance-tracker.git
 
-2. Navigate to the project directory:
-```bash
-   cd ZeroNode
-
-3. Install the necessary packages:
-```bash
-   npm install
-
-4. Set up your environment variables (create a .env file):
-```makefile
-   DB_CONNECTION=<your_database_connection>
-   JWT_SECRET=<your_jwt_secret>
-
-5. Start the application:
-```bash
-   npm start
-
-## Usage
-
-Once the application is running, you can access it in your web browser at ```http://localhost:3000. Create an account to get started with tracking your finances!
+hello

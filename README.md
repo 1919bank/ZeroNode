@@ -60,4 +60,7 @@ To get a local copy up and running, follow these steps:
 ```
 ## Usage
 
-Once the application is running, you can access it in your web browser at ```http://localhost:3000. Create an account to get started with tracking your finances!
+Once the application is running, you can access it in your web browser at 
+```http://localhost:3000
+```
+. Create an account to get started with tracking your finances!

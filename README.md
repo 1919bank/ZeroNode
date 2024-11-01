@@ -60,7 +60,26 @@ To get a local copy up and running, follow these steps:
 ```
 ## Usage
 
-Once the application is running, you can access it in your web browser at 
-```http://localhost:3000
-```
-. Create an account to get started with tracking your finances!
+Once the application is running, you can access it in your web browser at http://localhost:3000. Create an account to get started with tracking your finances!
+
+## Contributing
+
+Contributions are welcome! If you would like to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature/YourFeature).
+3. Make your changes and commit them (git commit -m 'Add some feature').
+4. Push to the branch (git push origin feature/YourFeature).
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Contact
+
+If you have any questions or suggestions, feel free to reach out:
+
+- Cesar Reyes
+- Email: hello@cesarreyes.digital
+- GitHub: 1919bank

@@ -5,7 +5,7 @@
   "description": "An application for managing financial health",
   "main": "server.js",
   "scripts": {
-    "test": "jest --config jest.config.js",
+    "test": "jest --config jest.config.cjs",
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
@@ -25,13 +25,5 @@
     "jest": "^29.7.0",
     "nodemon": "^2.0.15",
     "supertest": "^7.0.0"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "/node_modules/(?!your-package-to-transform)/"
-    ]
   }
 }

@@ -5,13 +5,16 @@ import bodyParser from 'body-parser';
 import userRoutes from './routes/userRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
 import savingsRoutes from './routes/savingsRoutes.js';
-import { connectDB } from './config/db.js';
+import { connectDB } from './config/db.js'; // Import the connectDB function
 
+// Load environment variables from .env file
 dotenv.config();
+
+// Connect to MongoDB
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(bodyParser.json());

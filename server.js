@@ -1,30 +1,31 @@
 import express from 'express';
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import userRoutes from './routes/userRoutes.js';
 import transactionRoutes from './routes/transactionRoutes.js';
 import savingsRoutes from './routes/savingsRoutes.js';
-import { connectDB } from './config/db.js'; // Import the connectDB function
+import { connectDB } from './config/db.js';
 
-// Load environment variables from .env file
 dotenv.config();
-
-// Connect to MongoDB
 connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 // Middleware
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // This line will parse incoming JSON requests
 
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/savings', savingsRoutes);
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+// Export the app for testing purposes
+if (require.main === module) {
+    // Start server only if the file is run directly, not when imported (important for testing)
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+    });
+}
+
+export default app; // Export the app instance for testing

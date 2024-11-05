@@ -1,12 +1,12 @@
 import Savings from '../models/savingsModel.js';
 
-// @desc Get all savings goals
+// @desc Get all savings goals for a user
 // @route GET /api/savings
-// @access Public
+// @access Private
 export const getSavings = async (req, res) => {
     try {
-        const savingsGoals = await Savings.find();
-        res.status(200).json(savingsGoals);
+        const savings = await Savings.find({ userId: req.user._id });
+        res.status(200).json(savings);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -14,18 +14,39 @@ export const getSavings = async (req, res) => {
 
 // @desc Create a new savings goal
 // @route POST /api/savings
-// @access Public
+// @access Private
 export const createSavings = async (req, res) => {
-    const { userId, goalName, targetAmount, savedAmount } = req.body;
+    const { goalName, targetAmount, dueDate } = req.body;
 
     try {
-        const newSavings = await Savings.create({
-            userId,
+        const savings = new Savings({
+            userId: req.user._id,
             goalName,
             targetAmount,
-            savedAmount,
+            dueDate,
         });
-        res.status(201).json(newSavings);
+
+        const createdSavings = await savings.save();
+        res.status(201).json(createdSavings);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+// @desc Update a savings goal
+// @route PUT /api/savings/:id
+// @access Private
+export const updateSavings = async (req, res) => {
+    try {
+        const updatedSavings = await Savings.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+        if (!updatedSavings) {
+            return res.status(404).json({ message: 'Savings goal not found' });
+        }
+        res.status(200).json(updatedSavings);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

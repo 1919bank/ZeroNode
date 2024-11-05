@@ -1,30 +1,32 @@
 import mongoose from 'mongoose';
 
-const savingsSchema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
+const savingsSchema = new mongoose.Schema(
+    {
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true,
+        },
+        goalName: {
+            type: String,
+            required: true,
+        },
+        targetAmount: {
+            type: Number,
+            required: true,
+        },
+        currentAmount: {
+            type: Number,
+            default: 0,
+        },
+        dueDate: {
+            type: Date,
+        },
     },
-    goalName: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    targetAmount: {
-        type: Number,
-        required: true
-    },
-    savedAmount: {
-        type: Number,
-        default: 0
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    {
+        timestamps: true,
     }
-});
+);
 
 const Savings = mongoose.model('Savings', savingsSchema);
-
 export default Savings;

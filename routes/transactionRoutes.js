@@ -1,12 +1,27 @@
 import express from 'express';
-import { getTransactions, createTransaction } from '../controllers/transactionController.js';
-import { getUsers, createUser, updateUser, deleteUser } from '../controllers/userController.js';
+import { body } from 'express-validator';
+import {
+    getTransactions,
+    createTransaction,
+    deleteTransaction,
+} from '../controllers/transactionController.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.get('/', getTransactions);
-router.post('/', createTransaction);
-router.put('/:id', updateUser);  // Update user
-router.delete('/:id', deleteUser);  // Delete user
+router.get('/', protect, getTransactions);
+router.post(
+    '/',
+    protect,
+    [
+        body('type')
+            .isIn(['income', 'expense'])
+            .withMessage('Type must be either "income" or "expense"'),
+        body('amount').isFloat({ gt: 0 }).withMessage('Amount must be greater than 0'),
+        body('category').not().isEmpty().withMessage('Category is required'),
+    ],
+    createTransaction
+);
+router.delete('/:id', protect, deleteTransaction);
 
 export default router;

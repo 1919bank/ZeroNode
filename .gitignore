@@ -1,2 +1,1 @@
-MONGO_URI=mongodb://localhost:27017/zeronode
-PORT=5000
+node_modules/

@@ -10,6 +10,11 @@ describe('User API', () => {
         await User.deleteMany();
     });
 
+    // Disconnect mongoose after all tests are done
+    afterAll(async () => {
+        await mongoose.connection.close();
+    });
+
     describe('POST /api/users', () => {
         it('should create a new user with valid input', async () => {
             const res = await request(app)
@@ -29,8 +34,8 @@ describe('User API', () => {
             const res = await request(app)
                 .post('/api/users')
                 .send({
-                    name: 'no name',
-                    email: 'invalidemail@test.com',
+                    name: '',
+                    email: 'invalidemail',
                     password: '123',
                 });
 
@@ -59,10 +64,10 @@ describe('User API', () => {
         });
 
         it('should return 404 if user is not found', async () => {
-            const token = generateToken('507f191e810c19729de860ea'); // Using a dummy valid ID
+            const token = generateToken('somevaliduserid');
 
             const res = await request(app)
-                .put('/api/users/507f191e810c19729de860ea')
+                .put('/api/users/507f191e810c19729de860ea') // Using a dummy ID
                 .set('Authorization', `Bearer ${token}`)
                 .send({ name: 'Jane Updated' });
 
@@ -89,7 +94,7 @@ describe('User API', () => {
         });
 
         it('should return 404 if user is not found', async () => {
-            const token = generateToken('507f191e810c19729de860ea');
+            const token = generateToken('somevaliduserid');
 
             const res = await request(app)
                 .delete('/api/users/507f191e810c19729de860ea')
